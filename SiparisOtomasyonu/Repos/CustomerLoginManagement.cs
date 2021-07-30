@@ -12,16 +12,16 @@ namespace SiparisOtomasyonu.Repos
 {
     class CustomerLoginManagement
     {
-        SqlConnection conn;
+        SqlConnection _conn;
         SqlDataAdapter adapter;
         SqlCommandBuilder commandBuilder;
         DataTable dtCustomerLogin;
         public CustomerLoginManagement()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ToString();
-            conn = new SqlConnection(connectionString);
+            _conn = new SqlConnection(connectionString);
             string query = $"select CustomerID [Sirket Adi], CONCAT(City,'/',Country) Password, ContactName, CompanyName, ContactTitle from Customers";
-            adapter = new SqlDataAdapter(query, conn);
+            adapter = new SqlDataAdapter(query, _conn);
             dtCustomerLogin = new DataTable();
            
         }
